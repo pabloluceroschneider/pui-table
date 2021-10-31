@@ -1,0 +1,4 @@
+.pui-table.t-head {
+  border-bottom: 1px solid #cecece;
+  user-select: none;
+}

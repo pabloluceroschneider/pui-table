@@ -1,0 +1,31 @@
+.pui-table.t-header {
+  border-bottom: 1px solid #cecece;
+  padding: 1em;
+  text-align: left;
+}
+
+.t-header__container{
+  display: flex;
+}
+
+.pui-table.t-header__title{
+  padding-right: 12px;
+}
+
+.pui-table.t-header__title:hover + .t-header__order-by {
+  visibility: visible;
+}
+
+.t-header__order-by {
+  visibility: hidden;
+  color: #929292;
+  padding: 0 12px;
+}
+
+.t-header__order-by--active {
+  visibility: visible;
+}
+
+.pui-table.t-header__order-by:hover {
+  visibility: visible;
+}

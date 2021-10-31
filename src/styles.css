@@ -1,0 +1,14 @@
+@import './components/TBody/styles.css';
+@import './components/TData/styles.css';
+@import './components/TH/styles.css';
+@import './components/THead/styles.css';
+@import './components/TRow/styles.css';
+
+.pui-table.t-table {
+  border-spacing: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+

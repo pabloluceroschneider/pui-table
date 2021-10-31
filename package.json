@@ -1,0 +1,34 @@
+{
+  "name": "pui-table",
+  "version": "0.1.0",
+  "description": "",
+  "author": {
+    "name": "Pablo Daniel Schneider",
+    "contact": "https://www.linkedin.com/in/pabloluceroschneider/"
+  },
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.0",
+    "@types/react": "^17.0.33",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.16.0",
+    "classnames": "^2.3.1"
+  }
+}
