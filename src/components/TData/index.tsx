@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classnames from '../../utils/classnames';
 import { useTableContext } from '../../context';
 
 const TData: React.FC<{ children: React.ReactNode, row: any }> = ({ children, row }) => {

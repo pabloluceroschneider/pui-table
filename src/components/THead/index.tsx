@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classnames from '../../utils/classnames';
 import { Header } from '../../types';
 import { useTableContext } from '../../context';
 import TH from '../TH';
