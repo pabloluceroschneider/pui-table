@@ -1,6 +1,7 @@
 export interface Header {
     Header: string;
     accesor: string;
+    width?: number;
 }
 export interface Data {
     [key: string]: any;

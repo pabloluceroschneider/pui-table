@@ -8,12 +8,15 @@ export declare const useTableContext: () => {
         headers: never[];
         data: never[];
         className: string;
-        draggable: boolean;
+        options: {
+            draggable: boolean;
+        };
         orderByColumn: string;
     };
     actions: {
         log: (e: any) => void;
         orderBy: (e: any) => void;
+        onDropRow: (e: any) => void;
     };
 };
 //# sourceMappingURL=index.d.ts.map
