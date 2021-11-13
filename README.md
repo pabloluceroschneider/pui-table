@@ -1,4 +1,4 @@
-<h1 align="center" style="box-shadow: 2px 2px;">
+<h1 align="center">
 PUI-TABLE 
 </h1>
 
