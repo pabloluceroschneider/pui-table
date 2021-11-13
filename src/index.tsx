@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classnames from './utils/classnames';
 import { TableParams } from './types';
 import { TableContextProvider } from './context';
 import THead from './components/THead';
