@@ -20,7 +20,7 @@ const THeader: React.FC<{ children: React.ReactChild; header: Header }> = ({ chi
 	};
 
 	return (
-		<th onClick={handleOrder} className={headerClasses}>
+		<th onClick={handleOrder} className={headerClasses} style={{ width: header.width }}>
 			<div className={headercontainerClasses}>
 				<div className={headerTitleClasses}>{children}</div>
 				<div className={headerOrderByClasses}>{isDesc ? '↓' : '↑'}</div>

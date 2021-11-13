@@ -1,7 +1,8 @@
 
 export interface Header {
   Header: string
-  accesor: string
+  accesor: string,
+  width?: number,
 }
 
 export interface Data {

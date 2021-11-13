@@ -1,4 +1,5 @@
 import React, { useReducer, useContext, createContext } from 'react';
+import { addRowIndex } from './utils';
 import reducer from './reducer';
 
 interface Context {
@@ -13,12 +14,15 @@ const defaultState = {
     headers: [],
     data: [],
     className: 'pui-table',
-		draggable: false,
+		options: {
+			draggable: false
+		},
 		orderByColumn: '',
   },
   actions: {
     log: defaultFn,
     orderBy: defaultFn,
+		onDropRow: defaultFn,
   },
 };
 
@@ -28,11 +32,13 @@ const useTableReducer = (initialProps: any) => {
 	const [ state, dispatch ] = useReducer(reducer, {
 		...defaultState.state,
 		...initialProps,
+		data: initialProps.data.map(addRowIndex)
 	});
 
 	const actions = {
 		log: (param: string) => dispatch({ type: 'LOGGER', payload: param }),
 		orderBy: (param: any) => dispatch({ type: 'ORDER_BY', payload: param }),
+		onDropRow: (param: any) => dispatch({ type: 'ROW_DND', payload: param }),
 	};
 
 	return { state, actions };
