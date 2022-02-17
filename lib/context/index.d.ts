@@ -1,8 +1,9 @@
 import React from 'react';
-export declare const TableContextProvider: React.FC<{
+interface ITableContextProvider {
     children: React.ReactChild[];
     value: any;
-}>;
+}
+export declare const TableContextProvider: React.FC<ITableContextProvider>;
 export declare const useTableContext: () => {
     state: {
         headers: never[];
@@ -11,12 +12,13 @@ export declare const useTableContext: () => {
         options: {
             draggable: boolean;
         };
-        orderByColumn: string;
+        onOrderByColumn: string;
     };
     actions: {
-        log: (e: any) => void;
-        orderBy: (e: any) => void;
+        onClickRow: (e: any) => void;
         onDropRow: (e: any) => void;
+        onOrderBy: (e: any) => void;
     };
 };
+export {};
 //# sourceMappingURL=index.d.ts.map
