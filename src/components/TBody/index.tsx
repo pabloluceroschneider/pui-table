@@ -6,7 +6,9 @@ import TRow from '../TRow';
 import TData from '../TData';
 
 const TBody: React.FC = () => {
-	const { state: { headers, data, className } } = useTableContext();
+	const { state } = useTableContext();
+	const { headers, data, className } = state;
+
 	const bodyClasses = classnames(className, 't-body');
 
 	return (
@@ -14,7 +16,11 @@ const TBody: React.FC = () => {
 			{data.map((row: Data) => (
 				<TRow key={row.rowIndex} dataRow={row}>
 					{headers.map((header: Header) => {
-						return <TData key={header.accesor} row={row} >{row[`${header.accesor}`]}</TData>;
+						return (
+							<TData key={header.accesor} row={row}>
+								{row[`${header.accesor}`]}
+							</TData>
+						);
 					})}
 				</TRow>
 			))}

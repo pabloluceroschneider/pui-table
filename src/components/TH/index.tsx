@@ -3,8 +3,15 @@ import classnames from '../../utils/classnames';
 import { useTableContext } from '../../context';
 import { Header } from '../../types';
 
-const THeader: React.FC<{ children: React.ReactChild; header: Header }> = ({ children, header }) => {
-	const { state: { className, orderByColumn }, actions: { orderBy } } = useTableContext();
+interface ITHeader {
+  children: React.ReactNode, 
+	header: Header
+}
+
+const THeader: React.FC<ITHeader> = ({ children, header }) => {
+	const { state, actions } = useTableContext();
+	const { className, orderByColumn } = state;
+	const { orderBy } = actions;
 	const [ isDesc, setIsDesc ] = useState(false);
 
 	const headerClasses = classnames(className, 't-header');
@@ -14,8 +21,9 @@ const THeader: React.FC<{ children: React.ReactChild; header: Header }> = ({ chi
 		't-header__order-by--active': orderByColumn === header.accesor,
 	});
 
-	const handleOrder = () => {
-		setIsDesc((prev) => !prev);
+	const handleOrder = (event: React.SyntheticEvent) => {
+		event.preventDefault();
+		setIsDesc(prev => !prev);
 		orderBy({ accesor: header.accesor, asc: isDesc });
 	};
 

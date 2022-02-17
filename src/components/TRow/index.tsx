@@ -3,7 +3,12 @@ import classnames from '../../utils/classnames';
 import { useTableContext } from '../../context';
 import { Data } from '../../types';
 
-const TBody: React.FC<{ children: React.ReactNode, dataRow: Data }> = ({ children, dataRow }) => {
+interface ITBody {
+  children: React.ReactNode, 
+	dataRow: Data
+}
+
+const TBody: React.FC<ITBody> = ({ children, dataRow }) => {
 	const { state, actions } = useTableContext();
 	const { className, options } = state;
 	const { onDropRow } = actions;
@@ -11,8 +16,8 @@ const TBody: React.FC<{ children: React.ReactNode, dataRow: Data }> = ({ childre
 	const bodyRowClasses = classnames(className, 't-body__t-row');
 	const rowId = `row-${dataRow.rowIndex}`;
 
-	function allowDrop(ev: any) {
-		ev.preventDefault();
+	function allowDrop(event: React.SyntheticEvent) {
+		event.preventDefault();
 	}
 	
 	function drag(ev: any) {

@@ -2,11 +2,20 @@ import React from 'react';
 import classnames from '../../utils/classnames';
 import { useTableContext } from '../../context';
 
-const TData: React.FC<{ children: React.ReactNode, row: any }> = ({ children, row }) => {
-	const { state: { className }, actions: { log } } = useTableContext();
+interface ITData {
+  children: React.ReactNode, 
+	row: any
+}
+
+const TData: React.FC<ITData> = ({ children, row }) => {
+	const { state, actions } = useTableContext();
+	const { className } = state;
+	const { log } = actions;
+	
 	const bodyDataClasses = classnames(className, 't-body__t-data');
 
-	const handleClick = () => {
+	const handleClick = (event: React.SyntheticEvent) => {
+		event.preventDefault();
 		log({ cell: children, row });
 	};
 
