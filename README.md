@@ -45,4 +45,4 @@ import Table from "pui-table";
 
 ## License
 
-`pui-table` is released under the [MIT License](http://opensource.org/licenses/MIT).
+`pui-table` is released under the [ISC License](http://opensource.org/licenses/ISC).
