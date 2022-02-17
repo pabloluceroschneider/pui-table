@@ -10,16 +10,12 @@ interface ActionsStrategy {
 const reducer: (state: any, action: any) => any = (state: any, action: any) => {
   const { type, payload } = action;
   const actionsStrategy: ActionsStrategy = {
-    LOGGER: () => {
-      console.log(payload)
-      return { ...state, log: payload };
-    },
     ORDER_BY: () => {
       const { data } = state;
       const { accesor, asc } = payload;
       let orderedByAttr = sortByAttr({ data, attr: accesor, asc });
       orderedByAttr = orderedByAttr.map(addRowIndex);
-      return { ...state, data: orderedByAttr, orderByColumn: accesor };
+      return { ...state, data: orderedByAttr, onOrderByColumn: accesor };
     },
     ROW_DND: () => {
       const { data } = state;
@@ -38,7 +34,7 @@ const reducer: (state: any, action: any) => any = (state: any, action: any) => {
 
       newData = newData.map((t: any, index) => ({...t, rowIndex: index }))
       
-      return { ...state, data: newData, orderByColumn: '' };
+      return { ...state, data: newData, onOrderByColumn: '' };
     },
   }
   return actionsStrategy[type]() || state;

@@ -10,13 +10,11 @@ interface ITData {
 const TData: React.FC<ITData> = ({ children, row }) => {
 	const { state, actions } = useTableContext();
 	const { className } = state;
-	const { log } = actions;
 	
 	const bodyDataClasses = classnames(className, 't-body__t-data');
 
 	const handleClick = (event: React.SyntheticEvent) => {
 		event.preventDefault();
-		log({ cell: children, row });
 	};
 
 	return (

@@ -11,39 +11,43 @@ interface ITBody {
 const TBody: React.FC<ITBody> = ({ children, dataRow }) => {
 	const { state, actions } = useTableContext();
 	const { className, options } = state;
-	const { onDropRow } = actions;
 	const { draggable } = options;
+	const { onClickRow, onDropRow } = actions;
+
 	const bodyRowClasses = classnames(className, 't-body__t-row');
 	const rowId = `row-${dataRow.rowIndex}`;
 
-	function allowDrop(event: React.SyntheticEvent) {
+	const handleClick = (event: React.SyntheticEvent) => {
+		event.preventDefault();
+		onClickRow(dataRow);
+	}
+
+	function onDragOver(event: React.DragEvent) {
 		event.preventDefault();
 	}
 	
-	function drag(ev: any) {
+	function onDragStart(event: React.DragEvent) {
 		const stringified = JSON.stringify(dataRow);
-		ev.dataTransfer.setData("dataRow", stringified);
+		event.dataTransfer.setData('pui-table:draggedRow', stringified);
 	}
 	
-	function drop(ev: any) {
-		var data = ev.dataTransfer.getData("dataRow");
-		const parsed = JSON.parse(data);
-		onDropRow({
-			dragged: parsed,
-			dropped: dataRow,
-		});
-		ev.preventDefault();
+	function onDrop(event: React.DragEvent) {
+		const dataTransfer = event.dataTransfer.getData('pui-table:draggedRow');
+		const dragged = JSON.parse(dataTransfer);
+		const dropped = dataRow;
+		onDropRow({ dragged, dropped });
+		event.preventDefault();
 	}
 
 	const draggableProps = {
 		draggable,
-		onDragStart: drag,
-		onDrop: drop,
-		onDragOver: allowDrop
+		onDragStart,
+		onDrop,
+		onDragOver,
 	}
 	
 	return (
-		<tr id={rowId} className={bodyRowClasses} {...draggableProps}>
+		<tr id={rowId} onClick={handleClick} className={bodyRowClasses} {...draggableProps}>
 			{children}
 		</tr>
 	);
