@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/components/TRow/index.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAG1B,OAAO,EAAE,IAAI,EAAE,MAAM,aAAa,CAAC;AAEnC,UAAU,MAAM;IACd,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC3B,OAAO,EAAE,IAAI,CAAA;CACb;AAED,QAAA,MAAM,KAAK,EAAE,KAAK,CAAC,EAAE,CAAC,MAAM,CAuC3B,CAAC;AAEF,eAAe,KAAK,CAAC"}
