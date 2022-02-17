@@ -10,7 +10,7 @@ export interface Data {
   [key: string]: any
 }
 
-enum HeaderType {
+export enum HeaderType {
   STRING = 'string',
   NUMBER = 'number',
   BOOLEAN = 'boolean',
