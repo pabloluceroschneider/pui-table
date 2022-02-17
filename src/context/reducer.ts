@@ -11,6 +11,7 @@ const reducer: (state: any, action: any) => any = (state: any, action: any) => {
   const { type, payload } = action;
   const actionsStrategy: ActionsStrategy = {
     LOGGER: () => {
+      console.log(payload)
       return { ...state, log: payload };
     },
     ORDER_BY: () => {
@@ -23,12 +24,20 @@ const reducer: (state: any, action: any) => any = (state: any, action: any) => {
     ROW_DND: () => {
       const { data } = state;
       const { dragged, dropped } = payload;
-      const draggedItem = { ...dragged, rowIndex: dropped.rowIndex };
-      const droppedItem = { ...dropped, rowIndex: dragged.rowIndex };
-      let newData = data;
-      newData.splice(dragged.rowIndex, 1, droppedItem);
-      newData.splice(dropped.rowIndex, 1, draggedItem);
-      newData = newData.map(addRowIndex);
+      let newData: any[] = [];
+      for (let index = 0; index < data.length; index++) {
+        
+        if (index === dropped.rowIndex) {
+          newData.push(dragged)
+        }
+        
+        if (index === dragged.rowIndex) continue;
+
+        newData.push(data[index])
+      }
+
+      newData = newData.map((t: any, index) => ({...t, rowIndex: index }))
+      
       return { ...state, data: newData, orderByColumn: '' };
     },
   }
